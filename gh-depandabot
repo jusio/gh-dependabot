@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+echo "Hello gh-depandabot!"
+
+# Determine if an executable is in the PATH
+if ! type -p xargs >/dev/null; then
+  echo "xargs not found on the system" >&2
+  exit 1
+fi
+
+gh pr list --label dependencies
