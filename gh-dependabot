@@ -9,4 +9,4 @@ if ! type -p xargs >/dev/null; then
   exit 1
 fi
 
-gh pr list --label dependencies
+gh pr list -R jusio/gh-dependabot-test --label dependencies --jq '.[] | .url' --json 'url' | xargs -I % gh pr review % -a -b "@dependabot merge"
